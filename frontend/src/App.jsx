@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
+import { Log } from "../../Logging Middleware/loggingMiddleware";
+
+
 
 export default function App({ initialTab = "home" }) {
   const [tab, setTab] = useState(initialTab);
+
+  useEffect(() => {
+    Log("frontend", "info", "urlShortener", `Switched to ${tab} tab`);
+  }, [tab]);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
